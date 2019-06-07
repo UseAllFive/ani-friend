@@ -1,10 +1,27 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="animation.css" />
+        <meta charset="UTF-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible" />
+        <title><%= htmlWebpackPlugin.options.title %></title>
         <style type="text/css">
             section {
                 height: 1000px;
+            }
+            .animation-group {
+                opacity: 0;
+                transition: opacity 0.25s ease-in;
+                display: block;
+            }
+
+            ani {
+                opacity: 0;
+            }
+
+            img {
+                width: 100px;
+                height: auto;
             }
         </style>
     </head>
@@ -24,6 +41,5 @@
         </section>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-        <script src="index.js"></script>
     </body>
 </html>
