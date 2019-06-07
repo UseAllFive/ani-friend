@@ -1,5 +1,5 @@
 {
-    "name": "ani",
+    "name": "ani-friend",
     "version": "1.0.0",
     "description": "A tool that makes animations a breeze.",
     "main": "dist/Ani.js",
@@ -9,13 +9,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/UseAllFive/ani.git"
+        "url": "https://github.com/UseAllFive/ani-friend.git"
     },
     "keywords": [],
     "author": "Jason Farrell (https://useallfive.com/)",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/UseAllFive/ani/issues"
+        "url": "https://github.com/UseAllFive/ani-friend/issues"
     },
     "devDependencies": {
         "@babel/polyfill": "^7.2.5",
