@@ -1,0 +1,14 @@
+.animation-group {
+    opacity: 0;
+    transition: opacity 0.25s ease-in;
+    display: block;
+}
+
+ani {
+    opacity: 0;
+}
+
+img {
+    width: 100px;
+    height: auto;
+}

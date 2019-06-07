@@ -1,0 +1,6 @@
+.history
+*.sublime-project
+*.sublime-workspace
+node_modules/
+/.vscode
+.history/
