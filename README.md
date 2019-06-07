@@ -2,7 +2,7 @@
 npm install --save ani-friend
 ```
 
-# Ani Friend
+# Animation Friend
 
 This tool will reveal an area when in view and allow you to control
 how the container and any children elements appear.
@@ -17,7 +17,11 @@ There are built in animation presets, or you can build your own.
 ```javascript
 import { Ani } from 'ani-friend'
 
-new Ani()
+const ani = new Ani()
+
+// If new elements that are animation groups get added dynamically,
+// calling this will add any new elements with an ani attribute
+ani.update()
 ```
 
 ```html
@@ -32,17 +36,28 @@ new Ani()
 </section>
 ```
 
+Add this to your styles in the head, so all elements are hidden prior to DOM loading:
+
+```css
+[ani],
+[data-ani] {
+    opacity: 0;
+}
+```
+
 ### HTML Attributes
 
+You may preface each attribute with `data-` if necessary.
+
 `ani`: Takes a string for the parent preset name
+`load-src`: add to image tags in lieu src attributes, and it will lazy load
 `ani-child`: Defines this node to be a child
+`ani-child-order`: you can sequence the order of nodes that come in
 `ani-preset`: Micro animations for individual objects.
 
 -   `basic-appear` comes with: `fade` and `wipe`
 -   Then you may append a direction `-up`, `-down`, `-left`, `-right`
-    `ani-child-order`: you can sequence the order of nodes that come in
 -   If you leave one blank, it takes the dom order, but ranks lower than nodes that are set
-    `load-src`: add to image tags in lieu src attributes, and it will lazy load
 
 ### Example animation preset
 

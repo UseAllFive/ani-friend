@@ -1,8 +1,8 @@
 {
     "name": "ani-friend",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A tool that makes animations a breeze.",
-    "main": "dist/Ani.js",
+    "main": "src/modules/Ani.js",
     "scripts": {
         "build": "webpack -p --env.production",
         "watch": "webpack-dev-server"

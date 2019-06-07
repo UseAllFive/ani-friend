@@ -9,13 +9,8 @@
             section {
                 height: 1000px;
             }
-            .animation-group {
-                opacity: 0;
-                transition: opacity 0.25s ease-in;
-                display: block;
-            }
-
-            ani {
+            [ani],
+            [data-ani] {
                 opacity: 0;
             }
 
@@ -31,7 +26,7 @@
         </section>
 
         <section id="bottom" ani="basic-appear" class="animation-group">
-            <img ani-child load-src="/images/classes.jpg" />
+            <img ani-child data-load-src="/images/classes.jpg" />
             <img ani-child ani-child-order="4" ani-preset="fade-down" load-src="/images/marketing.jpg" />
             <img ani-child ani-child-order="2" ani-preset="wipe-down" load-src="/images/marketing.jpg" />
             <div ani-child ani-preset="fade" ani-child-order="1" style="background: green; display: inline-block">
