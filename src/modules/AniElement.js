@@ -84,7 +84,7 @@ export class AniElement {
         const wrapper = document.createElement('div')
         this.el.parentNode.insertBefore(wrapper, this.el)
         wrapper.style.overflow = 'hidden'
-        wrapper.style.display = 'inline-block'
+        wrapper.style.display = getComputedStyle(this.el, null).display
         wrapper.appendChild(this.el)
         if (direction === 'out') {
             TweenMax.fromTo(this.el, 1, { scale: 1 }, { scale: 1.4 })
