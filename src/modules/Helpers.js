@@ -3,7 +3,6 @@ export const Helpers = {
         if (el.hasAttribute(att)) {
             return el.getAttribute(att)
         } else if (el.hasAttribute(`data-${att}`)) {
-            console.log('get attributee')
             return el.getAttribute(`data-${att}`)
         }
         return false

@@ -4,12 +4,12 @@ export class AniElement {
     constructor(el, index, preset) {
         this.el = el
         this.index = index
-        this.delaySpeed = 0.1
-        this.movement = 500
+        this.delaySpeed = 0.2
+        this.movement = 40
         if (preset && typeof preset === 'string' && preset !== '') {
             this.preset = preset
         } else {
-            this.preset = 'fade-up'
+            this.preset = 'fade'
         }
     }
 
@@ -51,7 +51,7 @@ export class AniElement {
         })
     }
 
-    wipe(direction) {
+    wipe(direction = 'left') {
         let startProps = this.clipPath(100)
         let endProps = this.clipPath(0)
         switch (direction) {
