@@ -7,7 +7,7 @@ npm install --save ani-friend
 This tool will reveal an area when in view and allow you to control
 how the container and any children elements appear.
 
-As the user scroll, it will lazyload images when they're at
+As the user scrolls, it will lazyload images when they’re at
 one screen height lower.
 
 There are built in animation presets, or you can build your own.

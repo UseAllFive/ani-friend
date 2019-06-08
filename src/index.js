@@ -1,3 +1,3 @@
 import { Ani } from './modules/Ani'
 
-new Ani()
+window.Ani = Ani

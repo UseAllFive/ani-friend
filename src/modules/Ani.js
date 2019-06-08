@@ -22,5 +22,6 @@ export class Ani {
             item.setAttribute('data-ani-added', true)
             this.groups.push(new AnimationGroup(item))
         })
+        this.check()
     }
 }

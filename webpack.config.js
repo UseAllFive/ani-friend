@@ -5,7 +5,7 @@ const path = require('path')
 
 const commonConfig = {
     context: __dirname + '/src',
-    entry: ['@babel/polyfill', './index.js'],
+    entry: ['@babel/polyfill/noConflict', './index.js'],
     output: {
         path: __dirname + '/dist',
         filename: 'Ani.js',
