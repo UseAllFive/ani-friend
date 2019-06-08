@@ -18,6 +18,8 @@ export class AniElement {
         const direction = motions[1] ? motions[1] : null
         if (motions[0] === 'wipe') {
             this.wipe(direction)
+        } else if (motions[0] === 'zoom') {
+            this.zoom(direction)
         } else {
             this.fade(direction)
         }
@@ -76,6 +78,19 @@ export class AniElement {
         endProps.delay = this.index * this.delaySpeed
         endProps.ease = Power4.easeOut
         TweenMax.fromTo(this.el, 1.0, startProps, endProps)
+    }
+
+    zoom(direction = 'in') {
+        const wrapper = document.createElement('div')
+        this.el.parentNode.insertBefore(wrapper, this.el)
+        wrapper.style.overflow = 'hidden'
+        wrapper.style.display = 'inline-block'
+        wrapper.appendChild(this.el)
+        if (direction === 'out') {
+            TweenMax.fromTo(this.el, 1, { scale: 1 }, { scale: 1.4 })
+        } else {
+            TweenMax.fromTo(this.el, 1, { scale: 1.4 }, { scale: 1 })
+        }
     }
 
     clipPath(top = 0, right = 0, bottom = 0, left = 0) {
