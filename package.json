@@ -1,6 +1,6 @@
 {
     "name": "ani-friend",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A tool that makes animations a breeze.",
     "main": "src/modules/Ani.js",
     "scripts": {
