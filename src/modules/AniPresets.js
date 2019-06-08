@@ -1,5 +1,5 @@
-import { AniElement } from './modules/AniElement'
-import { Helpers } from './modules/Helpers'
+import { AniElement } from './AniElement'
+import { Helpers } from './Helpers'
 
 export const AniPresets = {
     'default-appear': (el, children) => {

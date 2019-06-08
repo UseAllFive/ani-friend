@@ -1,4 +1,4 @@
-import { AniPresets } from '../AniPresets'
+import { AniPresets } from './AniPresets'
 import { Helpers } from './Helpers'
 
 export class AnimationGroup {
