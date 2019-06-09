@@ -98,10 +98,10 @@ export class AniElement {
         wrapper.style.height = getComputedStyle(this.el, null).height
         if (wrapper.style.position === 'absolute' || wrapper.style.position === 'relative') {
             this.el.position = 'relative'
-            this.el.style.top = 'auto'
-            this.el.style.right = 'auto'
-            this.el.style.left = 'auto'
-            this.el.style.bottom = 'auto'
+            this.el.style.top = null
+            this.el.style.right = null
+            this.el.style.left = null
+            this.el.style.bottom = null
         }
         wrapper.appendChild(this.el)
         if (direction === 'out') {
