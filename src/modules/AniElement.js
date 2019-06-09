@@ -84,7 +84,25 @@ export class AniElement {
         const wrapper = document.createElement('div')
         this.el.parentNode.insertBefore(wrapper, this.el)
         wrapper.style.overflow = 'hidden'
-        wrapper.style.display = getComputedStyle(this.el, null).display
+        if (getComputedStyle(this.el, null).display === 'inline') {
+            wrapper.style.display = 'inline-block'
+        } else {
+            wrapper.style.display = getComputedStyle(this.el, null).display
+        }
+        wrapper.style.position = getComputedStyle(this.el, null).position
+        wrapper.style.top = getComputedStyle(this.el, null).top
+        wrapper.style.left = getComputedStyle(this.el, null).left
+        wrapper.style.right = getComputedStyle(this.el, null).right
+        wrapper.style.bottom = getComputedStyle(this.el, null).bottom
+        wrapper.style.width = getComputedStyle(this.el, null).width
+        wrapper.style.height = getComputedStyle(this.el, null).height
+        if (wrapper.style.position === 'absolute' || wrapper.style.position === 'relative') {
+            this.el.position = 'relative'
+            this.el.style.top = 'auto'
+            this.el.style.right = 'auto'
+            this.el.style.left = 'auto'
+            this.el.style.bottom = 'auto'
+        }
         wrapper.appendChild(this.el)
         if (direction === 'out') {
             TweenMax.fromTo(this.el, 1, { scale: 1 }, { scale: 1.4 })
