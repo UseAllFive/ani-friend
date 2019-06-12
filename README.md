@@ -55,8 +55,9 @@ You may preface each attribute with `data-` if necessary.
 `ani-child-order`: you can sequence the order of nodes that come in
 `ani-preset`: Micro animations for individual objects.
 
--   `basic-appear` comes with: `fade` and `wipe`
--   Then you may append a direction `-up`, `-down`, `-left`, `-right`
+-   `basic-appear` comes with: `fade`, `wipe`, and `zoom`
+-   Then you may append a direction `-up`, `-down`, `-left`, `-right`; Zoom: `-in` and `-out`.
+-   For zoom, the element must be in a wrapper with an `overflow: hidden` that will crop the target.
 -   If you leave one blank, it takes the dom order, but ranks lower than nodes that are set
 
 ### Example animation preset
