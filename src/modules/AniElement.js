@@ -6,7 +6,7 @@ export class AniElement {
         this.el = el
         this.index = index
         this.delaySpeed = 0.2
-        this.movement = AniConfig.distance
+        this.movement = AniConfig.moveDistance
         if (preset && typeof preset === 'string' && preset !== '') {
             this.preset = preset
         } else {

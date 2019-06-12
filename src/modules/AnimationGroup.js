@@ -6,7 +6,7 @@ export class AnimationGroup {
     constructor(el) {
         this.el = el
         // Reveal when at this percent of the screen:
-        this.offsetPercentage = 0.25
+        this.offsetPercentage = AniConfig.inViewTriggerPercent
         this.images = el.querySelectorAll('img[load-src], img[data-load-src]')
         this.imageLoadedCount = 0
         this.hasAppeared = false

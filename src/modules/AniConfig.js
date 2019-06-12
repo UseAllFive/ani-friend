@@ -1,5 +1,6 @@
 export const AniConfig = {
-    initialDelay: 0.3,
+    initialDelay: 0.1,
     delaySpeed: 0.2,
-    distance: 40,
+    moveDistance: 40,
+    inViewTriggerPercent: 0.7,
 }
