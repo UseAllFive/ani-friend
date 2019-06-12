@@ -1,5 +1,6 @@
 import { AniPresets } from './AniPresets'
 import { Helpers } from './Helpers'
+import { AniConfig } from './AniConfig'
 
 export class AnimationGroup {
     constructor(el) {
@@ -43,7 +44,9 @@ export class AnimationGroup {
 
     appear() {
         this.hasAppeared = true
-        this.onAppear(this.el, this.children)
+        setTimeout(() => {
+            this.onAppear(this.el, this.children)
+        }, AniConfig.initialDelay * 1000)
     }
 
     isInViewport(elem, padding = 0) {

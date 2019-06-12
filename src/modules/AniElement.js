@@ -1,11 +1,12 @@
 import { TweenMax, Power4 } from 'gsap/TweenMax'
+import { AniConfig } from './AniConfig'
 
 export class AniElement {
     constructor(el, index, preset) {
         this.el = el
         this.index = index
         this.delaySpeed = 0.2
-        this.movement = 40
+        this.movement = AniConfig.distance
         if (preset && typeof preset === 'string' && preset !== '') {
             this.preset = preset
         } else {
@@ -91,9 +92,19 @@ export class AniElement {
         }
 
         if (direction === 'out') {
-            TweenMax.fromTo(this.el, 1, { scale: 1 }, { scale: 1.4 })
+            TweenMax.fromTo(
+                this.el,
+                1,
+                { opacity: 0, scale: 1 },
+                { opacity: 1, scale: 1.4, delay: this.index * this.delaySpeed }
+            )
         } else {
-            TweenMax.fromTo(this.el, 1, { scale: 1.4 }, { scale: 1 })
+            TweenMax.fromTo(
+                this.el,
+                1,
+                { opacity: 0, scale: 1.4 },
+                { opacity: 1, scale: 1, delay: this.index * this.delaySpeed }
+            )
         }
     }
 
