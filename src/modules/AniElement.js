@@ -5,7 +5,7 @@ export class AniElement {
     constructor(el, index, preset) {
         this.el = el
         this.index = index
-        this.delaySpeed = 0.2
+        this.delaySpeed = AniConfig.delaySpeed
         this.movement = AniConfig.moveDistance
         if (preset && typeof preset === 'string' && preset !== '') {
             this.preset = preset
