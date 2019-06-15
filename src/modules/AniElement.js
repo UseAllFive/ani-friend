@@ -1,12 +1,23 @@
 import { TweenMax, Power4 } from 'gsap/TweenMax'
 import { AniConfig } from './AniConfig'
+import { Helpers } from './Helpers'
 
 export class AniElement {
     constructor(el, index, preset) {
         this.el = el
         this.index = index
         this.delaySpeed = AniConfig.delaySpeed
+        if (Helpers.hasAttribute(this.el, 'ani-delay-speed')) {
+            this.delaySpeed = parseFloat(Helpers.getAttribute(this.el, 'ani-delay-speed'))
+        }
         this.movement = AniConfig.moveDistance
+        if (Helpers.hasAttribute(this.el, 'ani-move-distance')) {
+            this.movement = parseFloat(Helpers.getAttribute(this.el, 'ani-move-distance'))
+        }
+        this.speed = AniConfig.speed
+        if (Helpers.hasAttribute(this.el, 'ani-speed')) {
+            this.speed = parseFloat(Helpers.getAttribute(this.el, 'ani-speed'))
+        }
         if (preset && typeof preset === 'string' && preset !== '') {
             this.preset = preset
         } else {
@@ -45,7 +56,7 @@ export class AniElement {
                     break
             }
         }
-        TweenMax.fromTo(this.el, 1.0, startProps, {
+        TweenMax.fromTo(this.el, this.speed, startProps, {
             opacity: 1,
             y: 0,
             x: 0,
@@ -78,7 +89,7 @@ export class AniElement {
         }
         endProps.delay = this.index * this.delaySpeed
         endProps.ease = Power4.easeOut
-        TweenMax.fromTo(this.el, 1.0, startProps, endProps)
+        TweenMax.fromTo(this.el, this.speed, startProps, endProps)
     }
 
     zoom(direction = 'in') {
@@ -94,14 +105,14 @@ export class AniElement {
         if (direction === 'out') {
             TweenMax.fromTo(
                 this.el,
-                1,
+                this.speed,
                 { opacity: 0, scale: 1 },
                 { opacity: 1, scale: 1.4, delay: this.index * this.delaySpeed }
             )
         } else {
             TweenMax.fromTo(
                 this.el,
-                1,
+                this.speed,
                 { opacity: 0, scale: 1.4 },
                 { opacity: 1, scale: 1, delay: this.index * this.delaySpeed }
             )

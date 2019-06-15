@@ -48,11 +48,13 @@ Add this to your styles in the head, so all elements are hidden prior to DOM loa
 ### HTML Attributes
 
 You may preface each attribute with `data-` if necessary.
-
 `ani`: Takes a string for the parent preset name
 `load-src`: add to image tags in lieu src attributes, and it will lazy load
 `ani-child`: Defines this node to be a child
 `ani-child-order`: you can sequence the order of nodes that come in
+`ani-delay-speed`: in seconds, it gets multiplied by its order or index
+`ani-speed`: in seconds, the duration that the animation occurs in in
+`ani-move-distance`: in pixels, for x/y transforms on the fade preset
 `ani-preset`: Micro animations for individual objects.
 
 -   `basic-appear` comes with: `fade`, `wipe`, and `zoom`
