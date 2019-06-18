@@ -10,6 +10,7 @@ export const AniPresets = {
 AniPresets['basic-appear'] = (el, children) => {
     el.style.opacity = 1
     el.style.transition = 'none'
+    el.classList.add('ani-has-appeared')
     el.classList.add('ani-start')
     let count = 0
     let completeCount = 0
