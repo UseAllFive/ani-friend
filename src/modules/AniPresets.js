@@ -10,13 +10,13 @@ export const AniPresets = {
 AniPresets['basic-appear'] = (el, children) => {
     el.style.opacity = 1
     el.style.transition = 'none'
-    el.classList.add('ani-started')
+    el.classList.add('ani-start')
     let count = 0
     let completeCount = 0
     const onComplete = () => {
         completeCount++
         if (completeCount === count) {
-            el.classList.remove('ani-started')
+            el.classList.remove('ani-start')
             el.classList.add('ani-complete')
         }
     }
