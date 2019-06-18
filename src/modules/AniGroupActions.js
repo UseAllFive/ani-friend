@@ -1,13 +1,13 @@
 import { AniElement } from './AniElement'
 import { Helpers } from './Helpers'
 
-export const AniPresets = {
+export const AniGroupActions = {
     'default-appear': (el, children) => {
         el.style.opacity = 1
     },
 }
 
-AniPresets['basic-appear'] = (el, children) => {
+AniGroupActions['basic-appear'] = (el, children) => {
     el.style.opacity = 1
     el.style.transition = 'none'
     el.classList.add('ani-has-appeared')

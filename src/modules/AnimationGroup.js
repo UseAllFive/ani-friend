@@ -1,4 +1,4 @@
-import { AniPresets } from './AniPresets'
+import { AniGroupActions } from './AniGroupActions'
 import { Helpers } from './Helpers'
 import { AniConfig } from './AniConfig'
 
@@ -23,8 +23,8 @@ export class AnimationGroup {
             this.el.classList.add('appear')
         }
         if (Helpers.hasAttribute(el, 'ani')) {
-            if (typeof AniPresets[Helpers.getAttribute(el, 'ani')] === 'function') {
-                this.onAppear = AniPresets[Helpers.getAttribute(el, 'ani')]
+            if (typeof AniGroupActions[Helpers.getAttribute(el, 'ani')] === 'function') {
+                this.onAppear = AniGroupActions[Helpers.getAttribute(el, 'ani')]
             }
         }
     }
