@@ -3,9 +3,10 @@ import { AniConfig } from './AniConfig'
 import { Helpers } from './Helpers'
 
 export class AniElement {
-    constructor(el, index, preset) {
+    constructor(el, index, preset, completeHandler) {
         this.el = el
         this.index = index
+        this.completeHandler = completeHandler
         this.delaySpeed = AniConfig.delaySpeed
         if (Helpers.hasAttribute(this.el, 'ani-delay-speed')) {
             this.delaySpeed = parseFloat(Helpers.getAttribute(this.el, 'ani-delay-speed'))
@@ -65,6 +66,7 @@ export class AniElement {
             x: 0,
             ease: Power4.easeOut,
             delay: this.index * this.delaySpeed,
+            onComplete: this.completeHandler,
         })
     }
 
@@ -92,6 +94,7 @@ export class AniElement {
         }
         endProps.delay = this.index * this.delaySpeed
         endProps.ease = Power4.easeOut
+        endProps.onComplete = this.completeHandler
         TweenMax.fromTo(this.el, this.speed, startProps, endProps)
     }
 
@@ -110,14 +113,14 @@ export class AniElement {
                 this.el,
                 this.speed,
                 { opacity: 0, scale: 1 },
-                { opacity: 1, scale: 1.4, delay: this.index * this.delaySpeed }
+                { opacity: 1, scale: 1.4, delay: this.index * this.delaySpeed, onComplete: this.completeHandler }
             )
         } else {
             TweenMax.fromTo(
                 this.el,
                 this.speed,
                 { opacity: 0, scale: 1.4 },
-                { opacity: 1, scale: 1, delay: this.index * this.delaySpeed }
+                { opacity: 1, scale: 1, delay: this.index * this.delaySpeed, onComplete: this.completeHandler }
             )
         }
     }
@@ -134,6 +137,7 @@ export class AniElement {
     addClass(name) {
         setTimeout(() => {
             this.el.classList.add(name)
+            this.completeHandler()
         }, this.index * this.delaySpeed)
     }
 }
