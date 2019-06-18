@@ -27,13 +27,16 @@ export class AniElement {
 
     appear() {
         const motions = this.preset.split('-')
-        const direction = motions[1] ? motions[1] : null
-        if (motions[0] === 'wipe') {
-            this.wipe(direction)
-        } else if (motions[0] === 'zoom') {
-            this.zoom(direction)
+        const motionName = motions.shift()
+        const option = motions.join('-')
+        if (motionName === 'wipe') {
+            this.wipe(option)
+        } else if (motionName === 'zoom') {
+            this.zoom(option)
+        } else if (motionName === 'class' && option) {
+            this.addClass(option)
         } else {
-            this.fade(direction)
+            this.fade(option)
         }
     }
 
@@ -126,5 +129,11 @@ export class AniElement {
             webkitClipPath: `inset(${top}% ${right}% ${bottom}% ${left}%)`,
         }
         return paths
+    }
+
+    addClass(name) {
+        setTimeout(() => {
+            this.el.classList.add(name)
+        }, this.index * this.delaySpeed)
     }
 }
