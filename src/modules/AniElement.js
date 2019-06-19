@@ -36,6 +36,8 @@ export class AniElement {
             this.zoom(option)
         } else if (motionName === 'class' && option) {
             this.addClass(option)
+        } else if (motionName === 'text') {
+            this.text(option)
         } else {
             this.fade(option)
         }
@@ -123,6 +125,44 @@ export class AniElement {
                 { opacity: 1, scale: 1, delay: this.index * this.delaySpeed, onComplete: this.completeHandler }
             )
         }
+    }
+
+    text(option) {
+        const originalContent = this.el.innerHTML
+        Helpers.wrapLines(this.el)
+        const lines = this.el.querySelectorAll('.ani-line')
+        const speed = this.speed / lines.length + 1
+        const startingDelay = this.index * this.delaySpeed
+        lines.forEach((item, index) => {
+            let startingOpacity = 0
+            const $group = item.querySelector('.ani-line-group')
+            item.style.display = 'block'
+            if (option === 'line-mask') {
+                item.style.overflow = 'hidden'
+                startingOpacity = 1
+            }
+            $group.style.display = 'inline-block'
+            const complete = (i) => {
+                if (i === lines.length - 1) {
+                    this.el.innerHTML = originalContent
+                    this.completeHandler()
+                }
+            }
+            TweenMax.fromTo(
+                $group,
+                speed,
+                { y: $group.offsetHeight, opacity: startingOpacity },
+                {
+                    opacity: 1,
+                    y: 0,
+                    x: 0,
+                    ease: Power4.easeOut,
+                    delay: startingDelay + index * 0.1,
+                    onComplete: complete,
+                    onCompleteParams: [index],
+                }
+            )
+        })
     }
 
     clipPath(top = 0, right = 0, bottom = 0, left = 0) {

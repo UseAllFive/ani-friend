@@ -58,11 +58,12 @@ You may preface each attribute with `data-` if necessary.
 - `ani-speed`: in seconds, the duration that the animation occurs in in
 - `ani-move-distance`: in pixels, for x/y transforms on the fade preset
 - `ani-preset`: Micro animations for individual objects.
-  -  `basic-appear` comes with: `fade`, `wipe`, `zoom`, and `class`
-  - Then you may append a direction `-up`, `-down`, `-left`, `-right`; Zoom: `-in` and `-out`.
+  -  `basic-appear` comes with: `fade`, `wipe`, `zoom`, `text`, and `class`
+  - Then you may append a direction `-up`, `-down`, `-left`, `-right`; Zoom: `-in` and `-out`. Text: `-line-mask` and `-line-appear`.
   -  If you select class, you'll need to append a class name
     - Example: `ani-preset="class-my-class-name"` — this will add `my-class-name` to the element's class list in lieu of an appear function.
   - For zoom, the element must be in a wrapper with an `overflow: hidden` that will crop the target.
+  - For text, it will break the text in an element into lines so they can be individually animated.
 
 ### Example animation Group Action
 
