@@ -47,19 +47,20 @@ export class AniElement {
         let startProps = { x: 0, y: 0, opacity: 0 }
         if (typeof direction === 'string') {
             switch (direction) {
-                case 'up':
-                    startProps.y = this.movement
-                    break
-                case 'down':
-                    startProps.y = -this.movement
-                    break
                 case 'left':
                     startProps.x = this.movement
                     break
                 case 'right':
-                default:
                     startProps.x = -this.movement
                     break
+                case 'down':
+                    startProps.y = -this.movement
+                    break
+                case 'up':
+                    startProps.y = this.movement
+                    break
+                default:
+                    startProps.y = 0
             }
         }
         TweenMax.fromTo(this.el, this.speed, startProps, {
