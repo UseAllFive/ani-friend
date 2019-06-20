@@ -1,8 +1,8 @@
-const { TweenMax, Power4 } = require('gsap/TweenMax')
-const AniConfig = require('./AniConfig')
-const Helpers = require('./Helpers')
+import { TweenMax, Power4 } from 'gsap/TweenMax'
+import { AniConfig } from './AniConfig'
+import { Helpers } from './Helpers'
 
-class AniElement {
+export class AniElement {
     constructor(el, index, preset, completeHandler) {
         this.el = el
         this.index = index
@@ -182,5 +182,3 @@ class AniElement {
         }, this.index * this.delaySpeed)
     }
 }
-
-module.exports = AniElement
