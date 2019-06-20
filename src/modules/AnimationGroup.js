@@ -7,10 +7,20 @@ export class AnimationGroup {
         this.el = el
         // Reveal when at this percent of the screen:
         this.offsetPercentage = AniConfig.inViewTriggerPercent
-        this.images = el.querySelectorAll('img[load-src], img[data-load-src]')
+        const images = el.querySelectorAll('img[load-src], img[data-load-src]')
+        this.images = [...images].filter((child) => {
+            return child.closest('[ani], [data-ani]') === this.el
+        })
         this.imageLoadedCount = 0
         this.hasAppeared = false
-        this.children = [].slice.call(this.el.querySelectorAll('[ani-child], [data-ani-child]'))
+
+        const children = this.el.querySelectorAll('[ani-child], [data-ani-child]')
+
+        const filteredChildren = [...children].filter((child) => {
+            return child.closest('[ani], [data-ani]') === this.el
+        })
+
+        this.children = filteredChildren
         this.children.forEach((item, index) => {
             if (Helpers.hasAttribute(item, 'ani-child-order')) {
                 item.order = parseInt(Helpers.getAttribute(item, 'ani-child-order'))
