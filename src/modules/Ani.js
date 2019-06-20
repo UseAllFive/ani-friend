@@ -1,6 +1,6 @@
-import { AnimationGroup } from './AnimationGroup'
+const AnimationGroup = require('./AnimationGroup')
 
-export class Ani {
+class Ani {
     constructor() {
         this.groups = []
         this.update()
@@ -25,3 +25,4 @@ export class Ani {
         this.check()
     }
 }
+module.exports = Ani

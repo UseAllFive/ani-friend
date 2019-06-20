@@ -1,4 +1,4 @@
-export const Helpers = {
+const Helpers = {
     getAttribute(el, att) {
         if (el.hasAttribute(att)) {
             return el.getAttribute(att)
@@ -57,3 +57,5 @@ export const Helpers = {
         $container.innerHTML = tmp
     },
 }
+
+module.exports = Helpers

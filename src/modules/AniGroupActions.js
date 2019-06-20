@@ -1,7 +1,7 @@
-import { AniElement } from './AniElement'
-import { Helpers } from './Helpers'
+const AniElement = require('./AniElement')
+const Helpers = require('./Helpers')
 
-export const AniGroupActions = {
+const AniGroupActions = {
     'default-appear': (el, children) => {
         el.style.opacity = 1
     },
@@ -31,3 +31,5 @@ AniGroupActions['basic-appear'] = (el, children) => {
         ani.appear()
     })
 }
+
+module.exports = AniGroupActions

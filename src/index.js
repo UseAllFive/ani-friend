@@ -1,3 +1,4 @@
-import { Ani } from './modules/Ani'
+const Ani = require('./modules/Ani')
 
 window.Ani = Ani
+//new Ani()

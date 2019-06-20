@@ -1,8 +1,8 @@
-import { AniGroupActions } from './AniGroupActions'
-import { Helpers } from './Helpers'
-import { AniConfig } from './AniConfig'
+const AniGroupActions = require('./AniGroupActions')
+const Helpers = require('./Helpers')
+const AniConfig = require('./AniConfig')
 
-export class AnimationGroup {
+class AnimationGroup {
     constructor(el) {
         this.el = el
         // Reveal when at this percent of the screen:
@@ -84,3 +84,5 @@ export class AnimationGroup {
         })
     }
 }
+
+module.exports = AnimationGroup
