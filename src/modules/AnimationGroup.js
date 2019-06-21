@@ -6,7 +6,11 @@ export class AnimationGroup {
     constructor(el) {
         this.el = el
         // Reveal when at this percent of the screen:
-        this.offsetPercentage = AniConfig.inViewTriggerPercent
+        if (Helpers.hasAttribute(this.el, 'ani-in-view-trigger-percent')) {
+            this.offsetPercentage = parseFloat(Helpers.getAttribute(this.el, 'ani-in-view-trigger-percent'))
+        } else {
+            this.offsetPercentage = AniConfig.inViewTriggerPercent
+        }
         const images = el.querySelectorAll('img[load-src], img[data-load-src]')
         this.images = [...images].filter((child) => {
             return child.closest('[ani], [data-ani]') === this.el
