@@ -60,6 +60,11 @@ export class AnimationGroup {
     }
 
     isInViewport(elem, padding = 0) {
+        // If at the bottom of the page:
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            // Remove padding in case an el is near the bottom
+            padding = 0
+        }
         const bounding = elem.getBoundingClientRect()
         return bounding.top - padding < (window.innerHeight || document.documentElement.clientHeight)
     }
