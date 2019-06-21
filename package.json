@@ -1,6 +1,6 @@
 {
     "name": "ani-friend",
-    "version": "1.0.22",
+    "version": "1.0.23",
     "description": "A tool that makes animations a breeze.",
     "main": "src/modules/Ani.js",
     "scripts": {
@@ -13,6 +13,16 @@
     },
     "keywords": [],
     "author": "Jason Farrell (https://useallfive.com/)",
+    "contributors": [
+        {
+            "name": "Samantha Combs",
+            "email": "samantha@useallfive.com"
+        },
+        {
+            "name": "Bret Morris",
+            "email": "bret@useallfive.com"
+        }
+    ],
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/UseAllFive/ani-friend/issues"
