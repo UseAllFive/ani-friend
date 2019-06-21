@@ -7,10 +7,13 @@ npm install --save ani-friend
 This tool will reveal an area when in view and allow you to control
 how the container and any children elements appear.
 
-As the user scrolls, it will lazyload images when they’re at
+As the user scrolls, it can lazyload images when they’re at
 one screen height lower.
 
 There are built in animation presets, or you can build your own.
+
+![Example Zoom and Wipe motion](http://ua5.co/67e2fb2440aa/wipe-and-zoom.gif)
+![Example Text Motion](http://ua5.co/60c9d83d5ad8/ezgif-1-6b4c24069a4e.gif)
 
 ### Usage
 
@@ -33,7 +36,7 @@ ani.update()
         <img ani-child ani-child-order="3" ani-preset="wipe-left" load-src="/images/marketing.jpg" />
     </div>
     <img ani-child ani-child-order="1" ani-preset="fade-up" load-src="/images/marketing.jpg" />
-    <img ani-child ani-preset="class-my-class-name" load-src="/images/marketing.jpg"/>
+    <img ani-child ani-preset="class-my-class-name" load-src="/images/marketing.jpg" />
 </section>
 ```
 
