@@ -78,20 +78,20 @@ export class AniElement {
         let endProps = this.clipPath(0)
         switch (direction) {
             case 'up':
-                startProps = this.clipPath(100, 0, 0, 0)
+                startProps = this.clipPath(500, 0, 0, 0)
                 endProps = this.clipPath(0, 0, 0, 0)
                 break
             case 'down':
-                startProps = this.clipPath(0, 0, 100, 0)
+                startProps = this.clipPath(0, 0, 500, 0)
                 endProps = this.clipPath(0, 0, 0, 0)
                 break
             case 'left':
-                startProps = this.clipPath(0, 0, 0, 100)
+                startProps = this.clipPath(0, 0, 0, 500)
                 endProps = this.clipPath(0, 0, 0, 0)
                 break
             case 'right':
             default:
-                startProps = this.clipPath(0, 100, 0)
+                startProps = this.clipPath(0, 500, 0)
                 endProps = this.clipPath(0, 0, 0)
                 break
         }
