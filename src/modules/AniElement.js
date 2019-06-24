@@ -15,6 +15,10 @@ export class AniElement {
         if (Helpers.hasAttribute(this.el, 'ani-move-distance')) {
             this.movement = parseFloat(Helpers.getAttribute(this.el, 'ani-move-distance'))
         }
+        this.zoomScale = AniConfig.zoomScale
+        if (Helpers.hasAttribute(this.el, 'ani-zoom-scale')) {
+            this.zoomScale = parseFloat(Helpers.getAttribute(this.el, 'ani-zoom-scale'))
+        }
         this.speed = AniConfig.speed
         if (Helpers.hasAttribute(this.el, 'ani-speed')) {
             this.speed = parseFloat(Helpers.getAttribute(this.el, 'ani-speed'))
@@ -116,13 +120,18 @@ export class AniElement {
                 this.el,
                 this.speed,
                 { opacity: 0, scale: 1 },
-                { opacity: 1, scale: 1.4, delay: this.index * this.delaySpeed, onComplete: this.completeHandler }
+                {
+                    opacity: 1,
+                    scale: this.zoomScale,
+                    delay: this.index * this.delaySpeed,
+                    onComplete: this.completeHandler,
+                }
             )
         } else {
             TweenMax.fromTo(
                 this.el,
                 this.speed,
-                { opacity: 0, scale: 1.4 },
+                { opacity: 0, scale: this.zoomScale },
                 { opacity: 1, scale: 1, delay: this.index * this.delaySpeed, onComplete: this.completeHandler }
             )
         }
