@@ -74,6 +74,7 @@ export class AniElement {
             ease: Power4.easeOut,
             delay: this.index * this.delaySpeed,
             onComplete: this.completeHandler,
+            clearProps: 'x,y,opacity',
         })
     }
 
@@ -125,6 +126,8 @@ export class AniElement {
                     scale: this.zoomScale,
                     delay: this.index * this.delaySpeed,
                     onComplete: this.completeHandler,
+                    // Need to keep scale
+                    clearProps: 'opacity',
                 }
             )
         } else {
@@ -132,7 +135,13 @@ export class AniElement {
                 this.el,
                 this.speed,
                 { opacity: 0, scale: this.zoomScale },
-                { opacity: 1, scale: 1, delay: this.index * this.delaySpeed, onComplete: this.completeHandler }
+                {
+                    opacity: 1,
+                    scale: 1,
+                    delay: this.index * this.delaySpeed,
+                    onComplete: this.completeHandler,
+                    clearProps: 'all',
+                }
             )
         }
     }
@@ -170,6 +179,7 @@ export class AniElement {
                     delay: startingDelay + index * 0.1,
                     onComplete: complete,
                     onCompleteParams: [index],
+                    clearProps: 'all',
                 }
             )
         })
