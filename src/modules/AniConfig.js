@@ -6,4 +6,5 @@ export const AniConfig = {
     zoomScale: 1.1,
     inViewTriggerPercent: 0.7,
     speed: 1,
+    ease: 'Power2.easeOut',
 }

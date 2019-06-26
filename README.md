@@ -67,6 +67,7 @@ You may preface each attribute with `data-` if necessary.
     - Example: `ani-preset="class-my-class-name"` — this will add `my-class-name` to the element's class list in lieu of an appear function.
   - For zoom, the element must be in a wrapper with an `overflow: hidden` that will crop the target.
   - For text, it will break the text in an element into lines so they can be individually animated.
+- `ani-ease`: String for ease property - see ![gsap ease visualizer](https://greensock.com/ease-visualizer). Example: `ani-ease="Power4.easeInOut"`.
 
 ### Example animation Group Action
 

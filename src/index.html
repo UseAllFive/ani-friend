@@ -34,8 +34,11 @@ img {
         </section>
 
         <div ani-in-view-trigger-percent="0.1" ani="basic-appear">
-            <div ani-child ani-preset="wipe-left">
-                <img ani-child ani-preset="zoom-in" load-src="/images/UA5_Work_MrLeight_iPhone_01.jpg"/>
+            <div>
+                <img ani-child ani-preset="zoom-out" load-src="/images/UA5_Work_MrLeight_iPhone_01.jpg"/>
+            </div>
+            <div ani-child ani-ease="Power3.easeOut" ani-preset="wipe-left">
+                <img ani-child ani-preset="zoom-out" load-src="/images/UA5_Work_MrLeight_iPhone_01.jpg"/>
             </div>
             <!-- Support for ani-groups within groups -->
             <div ani="basic-appear">

@@ -23,6 +23,13 @@ export class AniElement {
         if (Helpers.hasAttribute(this.el, 'ani-speed')) {
             this.speed = parseFloat(Helpers.getAttribute(this.el, 'ani-speed'))
         }
+        this.ease = window.EaseLookup.find(AniConfig.ease)
+        if (Helpers.hasAttribute(this.el, 'ani-ease')) {
+            const ease = window.EaseLookup.find(Helpers.getAttribute(this.el, 'ani-ease'))
+            if (ease) {
+                this.ease = ease
+            }
+        }
         if (preset && typeof preset === 'string' && preset !== '') {
             this.preset = preset
         } else {
@@ -71,7 +78,7 @@ export class AniElement {
             opacity: 1,
             y: 0,
             x: 0,
-            ease: Power4.easeOut,
+            ease: this.ease,
             delay: this.index * this.delaySpeed,
             onComplete: this.completeHandler,
             clearProps: 'x,y,opacity',
@@ -101,7 +108,7 @@ export class AniElement {
                 break
         }
         endProps.delay = this.index * this.delaySpeed
-        endProps.ease = Power4.easeOut
+        endProps.ease = this.ease
         endProps.onComplete = this.completeHandler
         TweenMax.fromTo(this.el, this.speed, startProps, endProps)
     }
@@ -126,6 +133,7 @@ export class AniElement {
                     scale: this.zoomScale,
                     delay: this.index * this.delaySpeed,
                     onComplete: this.completeHandler,
+                    ease: this.ease,
                     // Need to keep scale
                     clearProps: 'opacity',
                 }
@@ -140,6 +148,7 @@ export class AniElement {
                     scale: 1,
                     delay: this.index * this.delaySpeed,
                     onComplete: this.completeHandler,
+                    ease: this.ease,
                     clearProps: 'all',
                 }
             )
@@ -175,7 +184,7 @@ export class AniElement {
                     opacity: 1,
                     y: 0,
                     x: 0,
-                    ease: Power4.easeOut,
+                    ease: this.ease,
                     delay: startingDelay + index * 0.1,
                     onComplete: complete,
                     onCompleteParams: [index],
