@@ -157,7 +157,7 @@ export class AniElement {
                     delay: this.index * this.delaySpeed,
                     onComplete: this.completeHandler,
                     ease: this.ease,
-                    clearProps: 'all',
+                    clearProps: 'opacity, scale',
                 }
             )
         }
