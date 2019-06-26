@@ -69,7 +69,7 @@ You may preface each attribute with `data-` if necessary.
   - For text, it will break the text in an element into lines so they can be individually animated.
 - `ani-text-line-y-offset`: Positive or negative number to  adjust the starting offset of each line of text.
 - `ani-text-line-delay-speed`: Number to adjust the delay speed that each line appears at. It is multiplied by the line index.
-- `ani-ease`: String for ease property - see ![gsap ease visualizer](https://greensock.com/ease-visualizer). Example: `ani-ease="Power4.easeInOut"`.
+- `ani-ease`: String for ease property - see [gsap ease visualizer]:(https://greensock.com/ease-visualizer). Example: `ani-ease="Power4.easeInOut"`.
 
 ### Example animation Group Action
 
