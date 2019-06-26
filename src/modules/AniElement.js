@@ -30,6 +30,14 @@ export class AniElement {
                 this.ease = ease
             }
         }
+        this.textLineDelaySpeed = AniConfig.textLineDelaySpeed
+        if (Helpers.hasAttribute(this.el, 'ani-text-line-delay-speed')) {
+            this.textLineDelaySpeed = parseFloat(AniConfig.textLineDelaySpeed)
+        }
+        this.textLineYOffset = AniConfig.textLineYOffset
+        if (Helpers.hasAttribute(this.el, 'ani-text-line-y-offset')) {
+            this.textLineYOffset = parseFloat(AniConfig.textLineYOffset)
+        }
         if (preset && typeof preset === 'string' && preset !== '') {
             this.preset = preset
         } else {
@@ -179,13 +187,13 @@ export class AniElement {
             TweenMax.fromTo(
                 $group,
                 speed,
-                { y: $group.offsetHeight, opacity: startingOpacity },
+                { y: $group.offsetHeight + this.textLineYOffset, opacity: startingOpacity },
                 {
                     opacity: 1,
                     y: 0,
                     x: 0,
                     ease: this.ease,
-                    delay: startingDelay + index * 0.1,
+                    delay: startingDelay + index * this.textLineDelaySpeed,
                     onComplete: complete,
                     onCompleteParams: [index],
                     clearProps: 'all',

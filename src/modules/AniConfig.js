@@ -7,4 +7,6 @@ export const AniConfig = {
     inViewTriggerPercent: 0.7,
     speed: 1,
     ease: 'Power2.easeOut',
+    textLineDelaySpeed: 0.1,
+    textLineYOffset: 0,
 }
