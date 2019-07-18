@@ -1,5 +1,5 @@
 export const Helpers = {
-    getAttribute(el, att) {
+    getAttribute: function(el, att) {
         if (el.hasAttribute(att)) {
             return el.getAttribute(att)
         } else if (el.hasAttribute(`data-${att}`)) {
@@ -7,13 +7,13 @@ export const Helpers = {
         }
         return false
     },
-    hasAttribute(el, att) {
+    hasAttribute: function(el, att) {
         if (el.hasAttribute(att) || el.hasAttribute(`data-${att}`)) {
             return true
         }
         return false
     },
-    wrapLines($container) {
+    wrapLines: function($container) {
         // get the text from the conatiner
         var text = $container.innerText
 
