@@ -46,6 +46,7 @@ const commonConfig = {
                                 {
                                     targets: {
                                         esmodules: true,
+                                        "ie": "11"
                                     },
                                 },
                             ],
