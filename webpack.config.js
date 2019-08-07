@@ -60,13 +60,13 @@ const commonConfig = {
 }
 const libConfig = {
     context: __dirname + '/src',
-    entry: ['@babel/polyfill/noConflict', './modules/Ani.js'],
+    entry: ['@babel/polyfill/noConflict', './modules/index.js'],
     output: {
         path: __dirname + '/lib',
         filename: 'Ani.js',
     },
     resolve: {
-        modules: ['node_modules', path.resolve(__dirname, './src/modules/Ani.js')],
+        modules: ['node_modules', path.resolve(__dirname, './src/modules/index.js')],
     },
     devtool : "cheap-source-map",
     module: {
