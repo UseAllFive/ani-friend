@@ -57,5 +57,50 @@ const commonConfig = {
         ],
     },
 }
+const libConfig = {
+    context: __dirname + '/src',
+    entry: ['@babel/polyfill/noConflict', './index.js'],
+    output: {
+        path: __dirname + '/lib',
+        filename: 'Ani.js',
+    },
+    resolve: {
+        modules: ['node_modules', path.resolve(__dirname, './src/index.js')],
+    },
+    plugins: [
+        new CleanWebpackPlugin(['dist']),
+        new CopyWebpackPlugin([
+            {
+                from: __dirname + '/src/images/**/*',
+                to: __dirname + '/dist/',
+            },
+        ])
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    targets: {
+                                        esmodules: true,
+                                        "ie": "11"
+                                    },
+                                },
+                            ],
+                        ],
+                    },
+                },
+            },
+        ],
+    },
+}
 
-module.exports = [commonConfig]
+
+module.exports = [commonConfig, libConfig]
