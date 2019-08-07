@@ -1,15 +1,6 @@
-const Ani = require("./Ani");
-const AniConfig = require("./AniConfig.js");
-const AniElement = require("./AniElement.js");
-const AniGroupActions = require("./AniGroupActions.js");
-const AnimationGroup = require("./AnimationGroup.js");
-const Helpers = require("./Helpers.js");
-
-module.exports = {
-    Ani: Ani,
-    AniConfig: AniConfig,
-    AniElement: AniElement,
-    AniGroupActions: AniGroupActions,
-    AnimationGroup: AnimationGroup,
-    Helpers: Helpers
-};
+module.exports.Ani = require("./Ani");
+module.exports.AniConfig = require("./AniConfig.js");
+module.exports.AniElement = require("./AniElement.js");
+module.exports.AniGroupActions = require("./AniGroupActions.js");
+module.exports.AnimationGroup = require("./AnimationGroup.js");
+module.exports.Helpers = require("./Helpers.js");
