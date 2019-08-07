@@ -32,6 +32,7 @@ const commonConfig = {
             inject: 'body',
         }),
     ],
+    devtool : "cheap-source-map",
     module: {
         rules: [
             {
@@ -59,23 +60,15 @@ const commonConfig = {
 }
 const libConfig = {
     context: __dirname + '/src',
-    entry: ['@babel/polyfill/noConflict', './index.js'],
+    entry: ['@babel/polyfill/noConflict', './modules/Ani.js'],
     output: {
         path: __dirname + '/lib',
         filename: 'Ani.js',
     },
     resolve: {
-        modules: ['node_modules', path.resolve(__dirname, './src/index.js')],
+        modules: ['node_modules', path.resolve(__dirname, './src/modules/Ani.js')],
     },
-    plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new CopyWebpackPlugin([
-            {
-                from: __dirname + '/src/images/**/*',
-                to: __dirname + '/dist/',
-            },
-        ])
-    ],
+    devtool : "cheap-source-map",
     module: {
         rules: [
             {
