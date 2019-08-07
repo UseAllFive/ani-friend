@@ -1,7 +1,15 @@
-require("./AniConfig.js");
-require("./AniElement.js");
-require("./AniGroupActions.js");
-require("./AnimationGroup.js");
-require("./Helpers.js");
+const Ani = require("./Ani");
+const AniConfig = require("./AniConfig.js");
+const AniElement = require("./AniElement.js");
+const AniGroupActions = require("./AniGroupActions.js");
+const AnimationGroup = require("./AnimationGroup.js");
+const Helpers = require("./Helpers.js");
 
-module.exports = require("./Ani").default;
+module.exports = {
+    Ani: Ani,
+    AniConfig: AniConfig,
+    AniElement: AniElement,
+    AniGroupActions: AniGroupActions,
+    AnimationGroup: AnimationGroup,
+    Helpers: Helpers
+};
