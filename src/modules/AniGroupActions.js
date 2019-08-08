@@ -1,8 +1,8 @@
-import { AniElement } from './AniElement'
+import AniElement from './AniElement'
 import { Helpers } from './Helpers'
 
 export const AniGroupActions = {
-    'default-appear': (el, children) => {
+    'default-appear': (el) => {
         el.style.opacity = 1
     },
 }

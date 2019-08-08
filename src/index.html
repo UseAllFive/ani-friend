@@ -4,24 +4,21 @@
         <meta charset="UTF-8"/>
         <meta content="ie=edge" http-equiv="x-ua-compatible"/>
         <title><%= htmlWebpackPlugin.options.title %></title>
-        <script src="https://unpkg.com/element-closest/browser"></script>
-        <style type="text/css">
+        <style>
+            [ani],
+            [data-ani] {
+                opacity: 0;
+            }
 
-[ani],
-[data-ani] {
-    opacity: 0;
-}
+            img {
+                width: 500px;
+                height: auto;
+            }
 
-img {
-    width: 500px;
-    height: auto;
-}
-
-.image-grid img {
-    width: 200px;
-}
-
-</style>
+            .image-grid img {
+                width: 200px;
+            }
+        </style>
     </head>
     <body>
         <section ani="basic-appear" class="animation-group">
@@ -62,10 +59,9 @@ img {
         </section>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-            <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-        <% } %>
+        <script src="../lib/ani-friend.js"></script>
         <script type="text/javascript">
+            const Ani = require("an-friend").Ani
             new Ani()
         </script>
     </body>

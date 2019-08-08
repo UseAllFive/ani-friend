@@ -1,10 +1,10 @@
-import { AnimationGroup } from './AnimationGroup'
+import AnimationGroup from './AnimationGroup'
 
-export class Ani {
+class Ani {
     constructor() {
         this.groups = []
         this.update()
-        window.addEventListener('scroll', (event) => {
+        window.addEventListener('scroll', () => {
             this.check()
         })
         this.check()
@@ -25,3 +25,4 @@ export class Ani {
         this.check()
     }
 }
+export default Ani

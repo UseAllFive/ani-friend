@@ -28,5 +28,6 @@ module.exports = {
         'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
         'no-underscore-dangle': ['error', { allowAfterThis: true }],
         'prettier/prettier': 'warn',
+        'no-underscore-dangle': ['error', { allow: ['__useDefault'] }],
     },
 }

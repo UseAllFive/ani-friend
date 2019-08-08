@@ -1,99 +1,54 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require('path')
+/* global __dirname, require, module*/
 
-const commonConfig = {
-    context: __dirname + '/src',
-    entry: ['@babel/polyfill/noConflict', './index.js'],
-    output: {
-        path: __dirname + '/dist',
-        filename: 'Ani.js',
-    },
-    resolve: {
-        modules: ['node_modules', path.resolve(__dirname, './src/index.js')],
-    },
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        port: 9000,
-    },
-    plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new CopyWebpackPlugin([
-            {
-                from: __dirname + '/src/images/**/*',
-                to: __dirname + '/dist/',
-            },
-        ]),
-        new HtmlWebpackPlugin({
-            title: 'Ani Examples',
-            template: __dirname + '/src/index.html',
-            inject: 'body',
-        }),
-    ],
-    devtool : "cheap-source-map",
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            [
-                                '@babel/preset-env',
-                                {
-                                    targets: {
-                                        esmodules: true,
-                                        "ie": "11"
-                                    },
-                                },
-                            ],
-                        ],
-                    },
-                },
-            },
-        ],
-    },
+const path = require('path')
+const env = require('yargs').argv.env // use --env with webpack 2
+const pkg = require('./package.json')
+const nodeExternals = require('webpack-node-externals')
+
+let libraryName = pkg.name
+
+let outputFile, mode
+
+if (env === 'build') {
+    mode = 'production'
+    outputFile = libraryName + '.min.js'
+} else {
+    mode = 'development'
+    outputFile = libraryName + '.js'
 }
-const libConfig = {
-    context: __dirname + '/src',
-    entry: ['@babel/polyfill/noConflict', './modules/index.js'],
+
+const config = {
+    mode: mode,
+    entry: __dirname + '/src/index.js',
+    devtool: 'inline-source-map',
     output: {
         path: __dirname + '/lib',
-        filename: 'Ani.js',
+        filename: outputFile,
+        library: libraryName,
+        libraryTarget: 'umd',
+        umdNamedDefine: true,
+        globalObject: "typeof self !== 'undefined' ? self : this",
     },
-    resolve: {
-        modules: ['node_modules', path.resolve(__dirname, './src/modules/index.js')],
-    },
-    devtool : "cheap-source-map",
+    target: 'node',
+    externals: [nodeExternals()],
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            [
-                                '@babel/preset-env',
-                                {
-                                    targets: {
-                                        esmodules: true,
-                                        "ie": "11"
-                                    },
-                                },
-                            ],
-                        ],
-                    },
-                },
+                test: /(\.jsx|\.js)$/,
+                loader: 'babel-loader',
+                exclude: /(node_modules|bower_components)/,
+            },
+            {
+                test: /(\.jsx|\.js)$/,
+                loader: 'eslint-loader',
+                exclude: /node_modules/,
             },
         ],
     },
+    resolve: {
+        modules: [path.resolve('./node_modules'), path.resolve('./src')],
+        extensions: ['.json', '.js'],
+    },
 }
 
-
-module.exports = [commonConfig, libConfig]
+module.exports = config

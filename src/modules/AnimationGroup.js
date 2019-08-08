@@ -2,7 +2,7 @@ import { AniGroupActions } from './AniGroupActions'
 import { Helpers } from './Helpers'
 import { AniConfig } from './AniConfig'
 
-export class AnimationGroup {
+class AnimationGroup {
     constructor(el) {
         this.el = el
         // Reveal when at this percent of the screen:
@@ -11,6 +11,7 @@ export class AnimationGroup {
         } else {
             this.offsetPercentage = AniConfig.inViewTriggerPercent
         }
+        console.log({ inViewTriggerPercent: AniConfig.inViewTriggerPercent, offsetPercentage: this.offsetPercentage })
         const images = el.querySelectorAll('img[load-src], img[data-load-src]')
         this.images = [...images].filter((child) => {
             return child.closest('[ani], [data-ani]') === this.el
@@ -73,7 +74,7 @@ export class AnimationGroup {
         return bounding.top - padding < (window.innerHeight || document.documentElement.clientHeight)
     }
 
-    imageLoadHandler(event) {
+    imageLoadHandler() {
         this.imageLoadedCount++
         // Want to check again in case user hasn't scrolled
         // while the image finishes loading
@@ -93,3 +94,4 @@ export class AnimationGroup {
         })
     }
 }
+export default AnimationGroup
