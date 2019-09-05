@@ -16,4 +16,4 @@ import { AniGroupActions } from './modules/AniGroupActions.js'
 import { AniConfig } from './modules/AniConfig.js'
 
 export { Ani, AniConfig, AniElement, AniGroupActions, AnimationGroup, Helpers }
-console.log('ani-friend v1.1.01')
+console.log('ani-friend v1.1.02')
