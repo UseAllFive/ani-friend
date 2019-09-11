@@ -87,7 +87,7 @@ class AniElement {
             y: 0,
             x: 0,
             ease: this.ease,
-            delay: this.index * this.delaySpeed,
+            delay: (1 + this.index) * this.delaySpeed,
             onComplete: this.completeHandler,
             clearProps: 'x,y,opacity',
         })
@@ -115,7 +115,7 @@ class AniElement {
                 endProps = this.clipPath(0, 0, 0)
                 break
         }
-        endProps.delay = this.index * this.delaySpeed
+        endProps.delay = (1 + this.index) * this.delaySpeed
         endProps.ease = this.ease
         endProps.onComplete = this.completeHandler
         TweenMax.fromTo(this.el, this.speed, startProps, endProps)
@@ -139,7 +139,7 @@ class AniElement {
                 {
                     opacity: 1,
                     scale: this.zoomScale,
-                    delay: this.index * this.delaySpeed,
+                    delay: (1 + this.index) * this.delaySpeed,
                     onComplete: this.completeHandler,
                     ease: this.ease,
                     // Need to keep scale
@@ -154,7 +154,7 @@ class AniElement {
                 {
                     opacity: 1,
                     scale: 1,
-                    delay: this.index * this.delaySpeed,
+                    delay: (1 + this.index) * this.delaySpeed,
                     onComplete: this.completeHandler,
                     ease: this.ease,
                     clearProps: 'opacity, scale',
@@ -168,7 +168,7 @@ class AniElement {
         Helpers.wrapLines(this.el)
         const lines = this.el.querySelectorAll('.ani-line')
         const speed = this.speed / lines.length + 1
-        const startingDelay = this.index * this.delaySpeed
+        const startingDelay = (1 + this.index) * this.delaySpeed
         lines.forEach((item, index) => {
             let startingOpacity = 0
             const $group = item.querySelector('.ani-line-group')
@@ -193,7 +193,7 @@ class AniElement {
                     y: 0,
                     x: 0,
                     ease: this.ease,
-                    delay: startingDelay + index * this.textLineDelaySpeed,
+                    delay: startingDelay + index * this.delaySpeed,
                     onComplete: complete,
                     onCompleteParams: [index],
                     clearProps: 'all',
@@ -215,7 +215,7 @@ class AniElement {
         setTimeout(() => {
             this.el.classList.add(name)
             this.completeHandler()
-        }, this.index * this.delaySpeed)
+        }, (1 + this.index) * this.delaySpeed)
     }
 }
 export default AniElement
