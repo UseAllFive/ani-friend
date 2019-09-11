@@ -20,9 +20,28 @@ export const Helpers = {
         // split the text into words
         var words = text.split(' ')
 
+        var parsedWords = []
+        words.forEach((word) => {
+            if (word.indexOf('-') !== -1) {
+                var hyphenatedWords = word.split('-')
+                hyphenatedWords.forEach((hw, i) => {
+                    let wordUpdated = hw
+                    if (i !== hyphenatedWords.length - 1) {
+                        wordUpdated += '-'
+                    }
+                    parsedWords.push(wordUpdated)
+                })
+            } else {
+                parsedWords.push(word)
+            }
+        })
+
         // wrap each word in a span and add it to a tmp
         var tmp = ''
-        tmp += '<span>' + words.join(' </span><span>') + ' </span> '
+        parsedWords.forEach((word) => {
+            let spacing = word.indexOf('-') !== -1 ? '' : ' '
+            tmp += `<span>${word}${spacing}</span>`
+        })
 
         // remove the text from the container, and replace it with the wrapped words
         $container.innerHTML = tmp
@@ -46,9 +65,9 @@ export const Helpers = {
                 // change the top
                 top = word.offsetTop
             }
-
+            let spacing = word.innerText.indexOf('-') !== -1 ? '' : ' '
             // add the content of the word node + a space
-            tmp += word.innerText + ' '
+            tmp += word.innerText + spacing
         })
         // close the last line
         tmp += '</span>'
