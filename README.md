@@ -53,6 +53,7 @@ Add this to your styles in the head, so all elements are hidden prior to DOM loa
 
 You may preface each attribute with `data-` if necessary.
 - `ani`: Takes a string for the parent preset name
+- `ani-in-view-trigger-percent`: attribute for ani parents. Decimal - when to reveal the group. When scrolling, a lower number will show the item sooner than higher numbers.
 - `load-src`: add to image tags in lieu src attributes, and it will lazy load
 - `ani-child`: Defines this node to be a child
 - `ani-child-order`: you can sequence the order of nodes that come in
