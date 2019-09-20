@@ -11,7 +11,6 @@ class AnimationGroup {
         } else {
             this.offsetPercentage = AniConfig.inViewTriggerPercent
         }
-        console.log({ inViewTriggerPercent: AniConfig.inViewTriggerPercent, offsetPercentage: this.offsetPercentage })
         const images = el.querySelectorAll('img[load-src], img[data-load-src]')
         this.images = [...images].filter((child) => {
             return child.closest('[ani], [data-ani]') === this.el
