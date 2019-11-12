@@ -44,13 +44,13 @@ class AnimationGroup {
     }
 
     check() {
-        if (this.isInViewport(this.el, window.innerHeight)) {
+        if (Helpers.isInViewport(this.el, window.innerHeight)) {
             this.loadAssets()
         }
         if (
             !this.hasAppeared &&
             this.imageLoadedCount === this.images.length &&
-            this.isInViewport(this.el, window.innerHeight * -this.offsetPercentage)
+            Helpers.isInViewport(this.el, window.innerHeight * -this.offsetPercentage)
         ) {
             this.appear()
         }
@@ -61,16 +61,6 @@ class AnimationGroup {
         setTimeout(() => {
             this.onAppear(this.el, this.children)
         }, AniConfig.initialDelay * 1000)
-    }
-
-    isInViewport(elem, padding = 0) {
-        // If at the bottom of the page:
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            // Remove padding in case an el is near the bottom
-            padding = 0
-        }
-        const bounding = elem.getBoundingClientRect()
-        return bounding.top - padding < (window.innerHeight || document.documentElement.clientHeight)
     }
 
     imageLoadHandler() {

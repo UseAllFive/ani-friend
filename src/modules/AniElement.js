@@ -43,9 +43,20 @@ class AniElement {
         } else {
             this.preset = 'fade'
         }
+        this.el.style.opacity = 0
     }
 
     appear() {
+        // only show the element if it's in the viewport,
+        // otherwise we wait for the user to scroll to it
+        clearTimeout(this.appearTimeout)
+        if (!Helpers.isInViewport(this.el)) {
+            this.appearTimeout = setTimeout(() => {
+                this.appear()
+            }, 250)
+            return
+        }
+        this.el.style.opacity = null
         const motions = this.preset.split('-')
         const motionName = motions.shift()
         const option = motions.join('-')
