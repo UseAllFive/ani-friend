@@ -2,10 +2,10 @@
     "name": "ani-friend",
     "version": "1.1.9",
     "description": "A tool that makes animations a breeze.",
-    "main": "lib/ani-friend.js",
+    "main": "lib/ani-friend.min.js",
     "scripts": {
         "build": "webpack -p --env.production",
-        "watch": "webpack-dev-server"
+        "watch": "webpack-dev-server --env.development"
     },
     "repository": {
         "type": "git",
@@ -29,6 +29,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.2.2",
+        "@babel/polyfill": "^7.2.5",
         "@babel/preset-env": "^7.2.0",
         "babel-loader": "^8.0.4",
         "babel-plugin-add-module-exports": "^1.0.2",
@@ -37,24 +38,27 @@
         "babel-register": "^6.26.0",
         "clean-webpack-plugin": "^1.0.0",
         "copy-webpack-plugin": "^4.6.0",
+        "element-closest": "^3.0.1",
         "eslint": "^5.15.3",
         "eslint-config-google": "^0.12.0",
         "eslint-loader": "^2.2.1",
         "eslint-plugin-lit": "^1.1.1",
         "eslint-plugin-prettier": "^3.1.0",
+        "gsap": "^2.1.3",
         "html-webpack-plugin": "^3.2.0",
         "path": "^0.12.7",
         "prettier": "^1.15.3",
         "uglifyjs-webpack-plugin": "^2.2.0",
-        "webpack": "^4.28.0",
+        "webpack": "^4.41.2",
         "webpack-cli": "^3.1.2",
         "webpack-dev-server": "^3.4.1",
         "webpack-node-externals": "^1.7.2",
         "yargs": "^13.3.0"
     },
-    "dependencies": {
+    "peerDependencies": {
         "@babel/polyfill": "^7.2.5",
         "element-closest": "^3.0.1",
-        "gsap": "^2.1.3"
+        "gsap": "^2.1.3",
+        "browser-sync-webpack-plugin": "^2.2.2"
     }
 }

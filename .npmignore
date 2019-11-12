@@ -3,3 +3,7 @@ node_modules
 lib
 es
 .vscode/
+.eslintrc.js
+.gitignore
+.babelrc
+.prettierrc.yaml

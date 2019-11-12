@@ -3,23 +3,44 @@
 const path = require('path')
 const env = require('yargs').argv.env // use --env with webpack 2
 const pkg = require('./package.json')
-const nodeExternals = require('webpack-node-externals')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 let libraryName = pkg.name
 
-let outputFile, mode
+let outputFile, mode, entry, plugins
 
-if (env === 'build') {
+if (env.production) {
     mode = 'production'
     outputFile = libraryName + '.min.js'
+    entry = 'index.js'
+    plugins = [
+        new CleanWebpackPlugin(['lib']),
+    ]
 } else {
     mode = 'development'
     outputFile = libraryName + '.js'
+    entry = 'test.js'
+    plugins = [
+        new CleanWebpackPlugin(['lib']),
+        new HtmlWebpackPlugin({
+            title: 'Test',
+            template: __dirname + '/src/index.html',
+            inject: 'body',
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: __dirname + '/src/images/',
+                to: __dirname + '/lib/images/',
+            },
+        ]),
+    ]
 }
 
 const config = {
     mode: mode,
-    entry: __dirname + '/src/index.js',
+    entry: __dirname + '/src/' + entry,
     devtool: 'inline-source-map',
     output: {
         path: __dirname + '/lib',
@@ -30,7 +51,14 @@ const config = {
         globalObject: "typeof self !== 'undefined' ? self : this",
     },
     target: 'node',
-    externals: [nodeExternals()],
+    externals: {
+        gsap: {
+            commonjs: 'gsap',
+            commonjs2: 'gsap',
+            amd: 'gsap',
+            root: '_',
+        },
+    },
     module: {
         rules: [
             {
@@ -45,6 +73,12 @@ const config = {
             },
         ],
     },
+    devServer: {
+        contentBase: path.join(__dirname, 'lib'),
+        compress: true,
+        port: 9000,
+    },
+    plugins,
     resolve: {
         modules: [path.resolve('./node_modules'), path.resolve('./src')],
         extensions: ['.json', '.js'],

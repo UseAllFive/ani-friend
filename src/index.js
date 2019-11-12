@@ -7,7 +7,6 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined') {
     }
     polyfill(window)
 }
-
 import Ani from './modules/Ani.js'
 import AniElement from './modules/AniElement.js'
 import AnimationGroup from './modules/AnimationGroup.js'
