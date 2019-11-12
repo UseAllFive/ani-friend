@@ -7,3 +7,5 @@ es
 .gitignore
 .babelrc
 .prettierrc.yaml
+.history
+.npmignore

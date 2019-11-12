@@ -5,7 +5,8 @@
     "main": "lib/ani-friend.min.js",
     "scripts": {
         "build": "webpack -p --env.production",
-        "watch": "webpack-dev-server --env.development"
+        "watch": "webpack-dev-server --env.development",
+        "publish": "npm run build; npm version patch; npm publish"
     },
     "repository": {
         "type": "git",
