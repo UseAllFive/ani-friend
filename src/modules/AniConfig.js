@@ -10,4 +10,6 @@ export const AniConfig = {
     ease: 'Power2.easeOut',
     textLineDelaySpeed: 0.1,
     textLineYOffset: 0,
+    // If false, it will only wait for images with load-src
+    waitForAllImages: true,
 }

@@ -11,10 +11,25 @@ class AnimationGroup {
         } else {
             this.offsetPercentage = AniConfig.inViewTriggerPercent
         }
-        const images = el.querySelectorAll('img[load-src], img[data-load-src]')
+        let images
+        if (AniConfig.waitForAllImages) {
+            images = el.querySelectorAll('img')
+        } else {
+            images = el.querySelectorAll('img[load-src], img[data-load-src]')
+        }
+
         this.images = [...images].filter((child) => {
             return child.closest('[ani], [data-ani]') === this.el
         })
+
+        this.images.forEach((img) => {
+            const src = Helpers.hasAttribute(img, 'load-src')
+                ? Helpers.getAttribute(img, 'load-src')
+                : img.getAttribute('src')
+            img.setAttribute('data-load-src', src)
+            img.removeAttribute('src')
+        })
+
         this.imageLoadedCount = 0
         this.hasAppeared = false
 
