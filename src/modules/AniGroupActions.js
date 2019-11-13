@@ -21,13 +21,18 @@ AniGroupActions['basic-appear'] = (el, children) => {
             el.classList.add('ani-complete')
         }
     }
+    // Appear state keeps track of how many items
+    // have already been shown. We use this later
+    // to time delays properly for when a section
+    // has been only partially appeared.
+    let appearState = { counter: 0 }
     children.forEach((item, index) => {
         let preset = ''
         count++
         if (Helpers.hasAttribute(item, 'ani-preset')) {
             preset = Helpers.getAttribute(item, 'ani-preset')
         }
-        const ani = new AniElement(item, index, preset, onComplete)
+        const ani = new AniElement(item, index, preset, onComplete, appearState)
         ani.appear()
     })
 }

@@ -3,11 +3,18 @@ import { AniConfig } from './AniConfig'
 import { Helpers } from './Helpers'
 
 class AniElement {
-    constructor(el, index, preset, completeHandler) {
+    constructor(el, index, preset, completeHandler, appearState) {
         this.el = el
         this.index = index
-        this.completeHandler = completeHandler
+        this.appearState = appearState
+        this.completeHandler = () => {
+            this.appearState.counter++
+            completeHandler()
+        }
         this.delaySpeed = AniConfig.delaySpeed
+        if (AniConfig.autoStagger) {
+            this.delaySpeed = (1 + this.index) * this.delaySpeed
+        }
         if (Helpers.hasAttribute(this.el, 'ani-delay-speed')) {
             this.delaySpeed = parseFloat(Helpers.getAttribute(this.el, 'ani-delay-speed'))
         }
@@ -56,6 +63,16 @@ class AniElement {
             }, 250)
             return
         }
+        // We need to update the delay time if a user takes
+        // their time scrolling to something that was
+        // already meant to be seen.
+        let updatedIndex = this.index - this.appearState.counter
+        updatedIndex = updatedIndex < 0 ? 0 : updatedIndex
+        this.delaySpeed = AniConfig.delaySpeed
+        if (AniConfig.autoStagger) {
+            this.delaySpeed = (1 + updatedIndex) * this.delaySpeed
+        }
+
         this.el.style.opacity = null
         const motions = this.preset.split('-')
         const motionName = motions.shift()
@@ -98,7 +115,7 @@ class AniElement {
             y: 0,
             x: 0,
             ease: this.ease,
-            delay: (1 + this.index) * this.delaySpeed,
+            delay: this.delaySpeed,
             onComplete: this.completeHandler,
             clearProps: 'x,y,opacity',
         })
@@ -126,7 +143,7 @@ class AniElement {
                 endProps = this.clipPath(0, 0, 0)
                 break
         }
-        endProps.delay = (1 + this.index) * this.delaySpeed
+        endProps.delay = this.delaySpeed
         endProps.ease = this.ease
         endProps.onComplete = this.completeHandler
         TweenMax.fromTo(this.el, this.speed, startProps, endProps)
@@ -150,7 +167,7 @@ class AniElement {
                 {
                     opacity: 1,
                     scale: this.zoomScale,
-                    delay: (1 + this.index) * this.delaySpeed,
+                    delay: this.delaySpeed,
                     onComplete: this.completeHandler,
                     ease: this.ease,
                     // Need to keep scale
@@ -165,7 +182,7 @@ class AniElement {
                 {
                     opacity: 1,
                     scale: 1,
-                    delay: (1 + this.index) * this.delaySpeed,
+                    delay: this.delaySpeed,
                     onComplete: this.completeHandler,
                     ease: this.ease,
                     clearProps: 'opacity, scale',
@@ -179,7 +196,6 @@ class AniElement {
         Helpers.wrapLines(this.el)
         const lines = this.el.querySelectorAll('.ani-line')
         const speed = this.speed / lines.length + 1
-        const startingDelay = (1 + this.index) * this.delaySpeed
         lines.forEach((item, index) => {
             let startingOpacity = 0
             const $group = item.querySelector('.ani-line-group')
@@ -204,7 +220,7 @@ class AniElement {
                     y: 0,
                     x: 0,
                     ease: this.ease,
-                    delay: startingDelay + index * this.delaySpeed,
+                    delay: this.delaySpeed + index * this.textLineDelaySpeed,
                     onComplete: complete,
                     onCompleteParams: [index],
                     clearProps: 'all',
@@ -226,7 +242,7 @@ class AniElement {
         setTimeout(() => {
             this.el.classList.add(name)
             this.completeHandler()
-        }, (1 + this.index) * this.delaySpeed)
+        }, this.delaySpeed)
     }
 }
 export default AniElement

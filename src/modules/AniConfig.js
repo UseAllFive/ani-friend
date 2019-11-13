@@ -1,6 +1,7 @@
 export const AniConfig = {
     initialDelay: 0.1,
-    // An element appears at this time * its order
+    autoStagger: true,
+    // An element appears at this time * its order if autoStagger: true
     delaySpeed: 0.2,
     moveDistance: 40,
     zoomScale: 1.6,
