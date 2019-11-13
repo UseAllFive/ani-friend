@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8"/>
-        <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+        <meta charset="UTF-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible" />
         <title><%= htmlWebpackPlugin.options.title %></title>
         <style>
             [ani],
@@ -23,39 +23,90 @@
     <body>
         <section ani="basic-appear" class="animation-group">
             <div>
-                <div ani-child ani-preset="zoom-out" style="background: url(/images/UA5_Work_MrLeight_iPhone_01.jpg); height: 300px;"></div>
+                <div
+                    ani-child
+                    ani-preset="zoom-out"
+                    style="background: url(/images/UA5_Work_MrLeight_iPhone_01.jpg); height: 300px;"
+                ></div>
             </div>
 
             <h1 ani-child ani-preset="text-line-appear">
-                Use All Five is a Los Angeles based design studio that creates brand identities and digital experiences across spaces and screens.
+                Use All Five is a Los Angeles based design studio that creates brand identities and digital experiences
+                across spaces and screens.
             </h1>
             <h1 ani-child ani-preset="text-line-mask" style="width: 300px">
-                Use All Five is a Los Angeles based design studio that creates brand identities and digital experiences across spaces and screens.
+                Use All Five is a Los Angeles based design studio that creates brand identities and digital experiences
+                across spaces and screens.
             </h1>
-            <p ani-child ani-preset="text-line-mask" style="width: 600px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus tortor, elementum ac rhoncus in, bibendum in felis. Nam varius leo a enim lacinia placerat. Nulla sed faucibus metus. Donec ex mauris, pellentesque sit amet justo at, vehicula commodo ligula. Nullam pharetra sem at dolor condimentum, eget fringilla tortor dictum. Nam ornare viverra odio vehicula maximus. Donec convallis mattis aliquet. Sed aliquet iaculis velit, ut tincidunt sem sodales at.</p>
+            <p ani-child ani-preset="text-line-mask" style="width: 600px">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus tortor, elementum ac rhoncus in,
+                bibendum in felis. Nam varius leo a enim lacinia placerat. Nulla sed faucibus metus. Donec ex mauris,
+                pellentesque sit amet justo at, vehicula commodo ligula. Nullam pharetra sem at dolor condimentum, eget
+                fringilla tortor dictum. Nam ornare viverra odio vehicula maximus. Donec convallis mattis aliquet. Sed
+                aliquet iaculis velit, ut tincidunt sem sodales at. large image:
+                https://www.mapsland.com/maps/south-america/large-scale-satellite-map-of-south-america.jpg?v=4
+            </p>
         </section>
 
         <div ani-in-view-trigger-percent="0.1" ani="basic-appear">
             <div>
-                <img alt="my alt text" ani-child ani-preset="zoom-out" load-src="/images/UA5_Work_MrLeight_iPhone_01.jpg"/>
+                <img
+                    alt="my alt text"
+                    ani-child
+                    ani-preset="zoom-out"
+                    load-src="/images/UA5_Work_MrLeight_iPhone_01.jpg"
+                />
             </div>
             <div ani-child ani-ease="Power3.easeOut" ani-preset="wipe-left">
-                <img alt="my alt text" ani-child ani-preset="zoom-out" data-load-src="/images/UA5_Work_MrLeight_iPhone_01.jpg"/>
+                <img
+                    alt="xmy alt text"
+                    ani-child
+                    ani-preset="zoom-out"
+                    data-load-src="/images/UA5_Work_MrLeight_iPhone_01.jpg"
+                />
             </div>
             <!-- Support for ani-groups within groups -->
             <div ani="basic-appear">
-                <img alt="my alt text" ani-child ani-preset="fade-down" load-src="/images/UA5_songmaker_laptop_01.jpg"/>
+                <img
+                    alt="my alt text"
+                    ani-child
+                    ani-preset="fade-down"
+                    load-src="/images/UA5_songmaker_laptop_01.jpg"
+                />
             </div>
         </div>
 
         <section ani="basic-appear" class="image-grid animation-group" id="bottom">
-            <img alt="my alt text" ani-child data-load-src="/images/UA5_Work_MrLeight_Tablet_01.jpg"/>
-            <img alt="my alt text" ani-child ani-child-order="4" ani-preset="fade-down" load-src="/images/UA5_songmaker_laptop_01.jpg"/>
-            <img alt="my alt text" ani-child ani-child-order="2" ani-preset="wipe-down" load-src="/images/UA5_songmaker_laptop_01.jpg"/>
-            <div alt="my alt text" ani-child ani-child-order="1" ani-preset="fade" style="background: green; display: inline-block">
-                <img ani-child ani-child-order="3" ani-preset="wipe-left" load-src="/images/UA5_songmaker_laptop_01.jpg"/>
+            <img alt="my alt text" ani-child data-load-src="/images/UA5_Work_MrLeight_Tablet_01.jpg" />
+            <img
+                alt="my alt text"
+                ani-child
+                ani-child-order="4"
+                ani-preset="fade-down"
+                load-src="/images/UA5_songmaker_laptop_01.jpg"
+            />
+            <img
+                alt="my alt text"
+                ani-child
+                ani-child-order="2"
+                ani-preset="wipe-down"
+                load-src="/images/UA5_songmaker_laptop_01.jpg"
+            />
+            <div
+                alt="my alt text"
+                ani-child
+                ani-child-order="1"
+                ani-preset="fade"
+                style="background: green; display: inline-block"
+            >
+                <img
+                    ani-child
+                    ani-child-order="3"
+                    ani-preset="wipe-left"
+                    load-src="/images/UA5_songmaker_laptop_01.jpg"
+                />
             </div>
-            <img ani-child ani-child-order="1" ani-preset="fade-up" load-src="/images/UA5_songmaker_laptop_01.jpg"/>
+            <img ani-child ani-child-order="1" ani-preset="fade-up" load-src="/images/UA5_songmaker_laptop_01.jpg" />
         </section>
     </body>
 </html>
