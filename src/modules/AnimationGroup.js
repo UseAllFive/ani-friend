@@ -3,14 +3,10 @@ import { Helpers } from './Helpers'
 import { AniConfig } from './AniConfig'
 
 class AnimationGroup {
-    constructor(el) {
+    constructor(el, parent) {
+        this.parent = parent
         this.el = el
-        // Reveal when at this percent of the screen:
-        if (Helpers.hasAttribute(this.el, 'ani-in-view-trigger-percent')) {
-            this.offsetPercentage = parseFloat(Helpers.getAttribute(this.el, 'ani-in-view-trigger-percent'))
-        } else {
-            this.offsetPercentage = AniConfig.inViewTriggerPercent
-        }
+        this.parent.observe(this.el)
         let images
         if (AniConfig.waitForAllImages) {
             images = el.querySelectorAll('img')
@@ -58,15 +54,9 @@ class AnimationGroup {
         }
     }
 
-    check() {
-        if (Helpers.isInViewport(this.el, window.innerHeight)) {
-            this.loadAssets()
-        }
-        if (
-            !this.hasAppeared &&
-            this.imageLoadedCount === this.images.length &&
-            Helpers.isInViewport(this.el, window.innerHeight * -this.offsetPercentage)
-        ) {
+    loadAssetsAndAppear() {
+        this.loadAssets()
+        if (!this.hasAppeared && this.imageLoadedCount === this.images.length) {
             this.appear()
         }
     }
@@ -80,9 +70,7 @@ class AnimationGroup {
 
     imageLoadHandler() {
         this.imageLoadedCount++
-        // Want to check again in case user hasn't scrolled
-        // while the image finishes loading
-        this.check()
+        this.loadAssetsAndAppear()
     }
 
     loadAssets() {
